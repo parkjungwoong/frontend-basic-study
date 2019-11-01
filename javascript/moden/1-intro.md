@@ -1,4 +1,4 @@
-# Modern JavaScript
+# Modern JavaScript Intro
 모던 자바스크립트를 위해 알아야될 기본 배경 지식
 
 ## 목차
