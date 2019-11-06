@@ -13,10 +13,56 @@ ES5 이 후 추가된 문법 정리
 ## 변수
 
 ``` javascript
-var a = 1;//
-let b = 1;//
-const c = 1;//
+var a = 1;//오래된 변수 선언 키워드
+let b = 1;//모던한 변수 선언 키워드
+const c = 1;// 상수 선언, 값을 변경할 수 없다.
 ```
+
+### var VS let
+`let`키워드는 es5이후 추가된 변수 선언 방식으로 `let`으로 선언된 변수는 선언된 블록에서만 유효성을 갖습니다.
+
+``` javascript
+if(true) {
+    let meg = 'hi'; //블록 내에서만 유효하다.
+    console.log(meg); //hi
+}
+
+console.log(meg);//ReferenceError: meg is not defined
+```
+
+`var`키워드는 함수내에서 선언되었다면 함수 내에서만 유효하고, 그 외에는 전역에서 변수로 동작한다.
+
+함수내에서 `var`선언: 함수내에서만 유효
+``` javascript
+function say() {
+    var meg = 'hi';
+    console.log(meg); // hi
+}
+
+console.log(meg); //ReferenceError: meg is not defined
+```
+
+블럭 내에서 `var`선언: 전역 변수로 동작
+``` javascript
+if(true) {
+    var meg = 'hi';
+    console.log(meg); //hi
+}
+
+console.log(meg); //hi
+```
+
+호이스팅으로 인한 `var`선언: 함수 내에서 var로 선언한 변수는 함수 최상단 옮겨짐
+``` javascript
+function say() {
+    meg = 'hi'; //호이스팅으로 인해 선언 위치에 상관없이 사용
+    console.log(meg); // hi
+    var meg = 'hello'; //호이스팅은 변수 선언에만 영향이 있고 변수 할당엔 영향 없음
+}
+say();
+```
+
+`var`의 이러한 특성 때문에 `let`을 이용하여 변수를 선언하는것이 예상치 못한 버그를 방지하는데 좋음
 
 ## iterator
 객체의 반복을 핸들링하는 방법으로 [Iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterator_protocol)을 구현한 객체에서 사용 가능하다.
@@ -81,35 +127,9 @@ console.log(gIt.next()); //{ value: undefined, done: true }
 더 많은 사용 방법은 [여기](https://wonism.github.io/javascript-generator/) 참고
 
 ## 화살표 함수 표현식
-간결한 함수선언식, 그리고 어떤 기타 이유에 의해서 쓰는데 찾아봐야함
+현재 수행중인 컨텍스트에서 짧은 코드를 위해 사용하기 위해 사용하는 함수 표현식으로 일반 함수와 다른 특성을 갖고 있다.
 
-함수 선언식과 화살표 함수 표현식 비교
-``` javascript
-function fn(a,b) { ... } //함수 선언식
-(a,b) => {} //화살표 함수 표현식
-```
-
-매개변수 표현 방법
-``` javascript
-(매개변수1,매개변수2,..) => { 함수 내용 }//괄호 안에 매개변수명 작성
-const sum = (a, b) => { return a+b }
-
-매개변수 => { 함수 내용 }// 매개변수가 하나일 경우 괄호 생략 가능
-const sayHi = name => { return `hi ${name}`};
-
-() => { } //매개변수가 없을 경우 괄호 생략 불가
-const noParam = () => { console.log('no param')};
-```
-
-함수 내용 표현 방법
-``` javascript
-() => { 함수 내용 }// 중괄호 안에 함수 내용 작성
-const noParam = () => { console.log('no param')};
-
-() => 함수 내용 //중괄호 생략시 { return 내용 } 과 같이 동작함
-const sum = (a, b) => a+b // { return a+b } 와 같음
-```
-
+자세한 내용은 [화살표 함수 정리](https://github.com/parkjungwoong/frontend-basic-study/blob/master/javascript/basic/%ED%95%A8%EC%88%98.md#%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98)참고
 
 ## 매개변수
 
