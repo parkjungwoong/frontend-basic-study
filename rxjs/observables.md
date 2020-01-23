@@ -1,19 +1,19 @@
 # Observable
-`observables`은 데이터 컬렉션을 갖고 구독하고 있는 대상에게 lazy Push를 하는 역활을 갖고 있다. 여기서의 `Lazy Push`라 함은 Push와 Pull의 개념을 정리 하고 넘어가야 한다.
+`observables`은 데이터 컬렉션을 갖고 구독하고 있는 대상에게 lazy Push를 하는 역활을 갖고 있다. 여기서의 `Lazy Push`라 함은 Push와 Pull의 개념을 정리 하고 넘어가야 한다. (그래서 Lazy Push가 뭔뎅 ..)
 
 ### Pull vs Push
 데이터의 생산자와 소비자 관점에서 바라봤을때 일반적으로(서버-클라 관계 상황) 생산자(서버)는 요청을 받았을 때 데이터를 생산, 소비자(클라)는 데이터가 필요할 때 요청하는 흐름으로 진행된다. 
 
 이러한 방식이 `Pull`이라고 하며 `Push`의 경우 소비자(클라)는 데이터를 받을 준비(subscribe) 상태이고, 생산자(서버)는 데이터를 생산자가 원하는 시점에 생산하여 소비자에게 보낸다.(push)
 
-> 즉 `observables`은 Push 방식으로 동작하며, Obseervable이 특정 시점에 데이터를 Push 할 때 `observables`을 구독(subscribe)하고 있는 소비자는 데이터를 받게 된다.
+> 즉 `observables`는 Push 방식으로 동작하며, `observables`이 특정 시점에 데이터를 Push 할 때 구독(subscribe)하고 있는 소비자는 데이터를 받게 된다.
 
-## Promise vs Observables
+## Push 방식 구현 방법에서의 Promise와 Observables
 Rx를 사용하지 않은 이전 Push 방식은 Promise를 통해 구현 할 수 있었다.
 
-promise를 이용한 방식은 한번 push( resolve, reject 메소드 수행 ) 하면 더 이상 push를 하지 못한다는 단점이 있다. ( 단발성 )
+promise를 이용한 방식은 한번 push( resolve 또는 reject 메소드 수행 ) 하면 더 이상 push를 하지 못한다는 단점이 있다. ( 단발성 )
 
-하지만 RxJS의 Observables를 이용할 경우 여러값을 push할 수 있다.
+하지만 RxJS의 Observables를 이용할 경우 여러번 push할 수 있다.
 
 - promise를 이용한 push 방식
 
