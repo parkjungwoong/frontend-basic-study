@@ -190,6 +190,3 @@ setTimeout(() => unsub.unsubscribe(),2000);
 > 자바스크립트에서 푸시 방식을 개발하기 위한 새로운 방법으로, Observable은 여러값의 생산자이며, Observers(Observable을 구독하는 소비자)에게 그 데이터를 '푸시'하는 것이다.
 
 > (원문) RxJS introduces Observables, a new Push system for JavaScript. An Observable is a Producer of multiple values, "pushing" them to Observers (Consumers).
-
-
-
