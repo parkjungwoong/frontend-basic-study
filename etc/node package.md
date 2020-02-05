@@ -36,6 +36,11 @@ package-lock.json 파일은 다음 4가지 목적으로 소스코드에 포함�
 package.json의 version 필드에 작성되는 버저닝 규칙
 
 버저닝 방식: `MAJOR`.`MINOR`.`PATCH`
+
+- MAJOR version when you make incompatible API changes <- 기존에 지원하던 기능에 변경이나 삭제가 있을 경우,
+- MINOR version when you add functionality in a backwards compatible manner, and <- 새로운 기능이 추가된 경우
+- PATCH version when you make backwards compatible bug fixes. <- 버그 픽스
+
 [semver 공식문서](https://semver.org/)
 
 '>', '^', '~' 이런 표기법은 아래 문서 참고
